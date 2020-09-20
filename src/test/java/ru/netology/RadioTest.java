@@ -9,9 +9,9 @@ public class RadioTest {
 
     @Test
     public void shouldNextRadioStation() {
-        radio.setStationNumber(8);
+        radio.setStationNumber(7);
         radio.nextRadioStation();
-        assertEquals(0, radio.getStationNumber());
+        assertEquals(8, radio.getStationNumber());
     }
 
     @Test
@@ -36,6 +36,5 @@ public class RadioTest {
         assertEquals(4, radio.getVolumeLevel());
         System.out.println("Текущий уровень громкости = " + radio.getVolumeLevel());
     }
- 
 }
 
