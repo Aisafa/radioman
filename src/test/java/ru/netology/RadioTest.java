@@ -1,70 +1,49 @@
 package ru.netology;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RadioTest {
     public Radio radio = new Radio();
 
-    @Test
-    public void shouldNextRadioStation1() {
-        radio.setStationNumber(0);
+    @ParameterizedTest
+    @CsvFileSource(resources = "/NextRadioStation.csv")
+    public void shouldNextRadioStation(String test, int StationNumber, int expected) {
+        radio.setStationNumber(StationNumber);
         radio.nextRadioStation();
-        assertEquals(1, radio.getStationNumber());
+        assertEquals(expected, radio.getStationNumber());
+        System.out.println("Текущая Радиостанция = " + radio.getStationNumber());
     }
 
-    @Test
-    public void shouldNextRadioStation2() {
-        radio.setStationNumber(9);
-        radio.nextRadioStation();
-        assertEquals(0, radio.getStationNumber());
-    }
-
-    @Test
-    public void shouldPrevRadioStation1() {
-        radio.setStationNumber(0);
+    @ParameterizedTest
+    @CsvFileSource(resources = "/PrevRadioStation.csv")
+    public void shouldPrevRadioStation(String test, int StationNumber, int expected) {
+        radio.setStationNumber(StationNumber);
         radio.prevRadioStation();
-        assertEquals(9, radio.getStationNumber());
+        assertEquals(expected, radio.getStationNumber());
+        System.out.println("Текущая Радиостанция = " + radio.getStationNumber());
     }
 
-    @Test
-    public void shouldPrevRadioStation2() {
-        radio.setStationNumber(3);
-        radio.prevRadioStation();
-        assertEquals(2, radio.getStationNumber());
-    }
-
-    @Test
-    public void shouldUpVolumeLevel() {
-        radio.setVolumeLevel(5);
+    @ParameterizedTest
+    @CsvFileSource(resources = "/UpVolumeLevel.csv")
+    public void shouldUpVolumeLevel(String test, int VolumeLevel, int expected) {
+        radio.setVolumeLevel(VolumeLevel);
         radio.upVolumeLevel();
-        assertEquals(6, radio.getVolumeLevel());
-        System.out.println("Текущий уровень громкости = " + radio.getVolumeLevel());
-    }
-    @Test
-    public void shouldUpVolumeLevel2() {
-        radio.setVolumeLevel(10);
-        radio.upVolumeLevel();
-        assertEquals(10, radio.getVolumeLevel());
+        assertEquals(expected, radio.getVolumeLevel());
         System.out.println("Текущий уровень громкости = " + radio.getVolumeLevel());
     }
 
-
-    @Test
-    public void shouldDownVolumeLevel() {
-        radio.setVolumeLevel(5);
+    @ParameterizedTest
+    @CsvFileSource(resources = "/DownVolumeLevel.csv")
+    public void shouldDownVolumeLevel(String test, int VolumeLevel, int expected) {
+        radio.setVolumeLevel(VolumeLevel);
         radio.downVolumeLevel();
-        assertEquals(4, radio.getVolumeLevel());
+        assertEquals(expected, radio.getVolumeLevel());
         System.out.println("Текущий уровень громкости = " + radio.getVolumeLevel());
     }
 
-    @Test
-    public void shouldDownVolumeLevel2() {
-        radio.setVolumeLevel(0);
-        radio.downVolumeLevel();
-        assertEquals(0, radio.getVolumeLevel());
-        System.out.println("Текущий уровень громкости = " + radio.getVolumeLevel());
-    }
 }
 

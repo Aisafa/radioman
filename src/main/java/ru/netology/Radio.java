@@ -27,7 +27,6 @@ public class Radio {
     public void nextRadioStation() {
         if (this.stationNumber < maxStation) {
             this.stationNumber += 1;
-            // System.out.println("Текущая Радиостанция = " + this.stationNumber);
         } else {
             this.stationNumber = minStation;
         }
@@ -38,7 +37,7 @@ public class Radio {
             if (this.stationNumber > minStation) {
                 this.stationNumber -= 1;
                 // System.out.println("Текущая Радиостанция = " + this.stationNumber);
-            } else  {
+            } else {
                 this.stationNumber = maxStation;
             }
         }
