@@ -13,6 +13,14 @@ public class Radio {
     }
 
     public void setStationNumber(int stationNumber) {
+        if (stationNumber > maxStation) {
+            this.stationNumber = this.maxStation;
+            return;
+        }
+        if (stationNumber < minStation) {
+            this.stationNumber = this.minStation;
+            return;
+        }
         this.stationNumber = stationNumber;
     }
 
@@ -21,6 +29,14 @@ public class Radio {
     }
 
     public void setVolumeLevel(int volumeLevel) {
+        if (volumeLevel > maxVolumeLevel) {
+            this.volumeLevel=this.maxVolumeLevel;
+            return;
+        }
+        if (volumeLevel < minVolumeLevel) {
+            this.volumeLevel=this.minVolumeLevel;
+            return;
+        }
         this.volumeLevel = volumeLevel;
     }
 
@@ -36,7 +52,6 @@ public class Radio {
         {
             if (this.stationNumber > minStation) {
                 this.stationNumber -= 1;
-                // System.out.println("Текущая Радиостанция = " + this.stationNumber);
             } else {
                 this.stationNumber = maxStation;
             }
