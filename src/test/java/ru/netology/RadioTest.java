@@ -13,6 +13,7 @@ public class RadioTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/NextRadioStation.csv")
     public void shouldNextRadioStation(String test, int StationNumber, int expected) {
+        radio1.setStationNumber(StationNumber);
         radio1.nextRadioStation();
         assertEquals(expected, radio1.getStationNumber());
         System.out.println("Текущая Радиостанция = " + radio1.getStationNumber());
