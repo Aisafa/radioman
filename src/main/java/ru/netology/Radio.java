@@ -5,8 +5,15 @@ public class Radio {
     private int volumeLevel;
     private int maxStation = 9;
     private int minStation = 0;
-    private int maxVolumeLevel = 10;
+    private int maxVolumeLevel = 9;
     private int minVolumeLevel = 0;
+
+    public Radio(ru.netology.constructor.Radio radio) {
+        this.maxStation = radio.getMaxStation();
+        this.minStation = radio.getMinStation();
+        this.maxVolumeLevel = radio.getMaxVolumeLevel();
+        this.minVolumeLevel = radio.getMinVolumeLevel();
+    }
 
     public int getStationNumber() {
         return this.stationNumber;
@@ -30,11 +37,11 @@ public class Radio {
 
     public void setVolumeLevel(int volumeLevel) {
         if (volumeLevel > maxVolumeLevel) {
-            this.volumeLevel=this.maxVolumeLevel;
+            this.volumeLevel = this.maxVolumeLevel;
             return;
         }
         if (volumeLevel < minVolumeLevel) {
-            this.volumeLevel=this.minVolumeLevel;
+            this.volumeLevel = this.minVolumeLevel;
             return;
         }
         this.volumeLevel = volumeLevel;
